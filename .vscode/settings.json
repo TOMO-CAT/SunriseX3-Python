@@ -1,0 +1,10 @@
+{
+    "editor.formatOnSave": true,
+    "cSpell.words": [
+        "gpio",
+        "hobot",
+        "mipi",
+        "MJPEG",
+        "unexport"
+    ]
+}
