@@ -34,6 +34,12 @@ class CameraRecorder(object):
         self._camera.close_cam()
 
     def get_img(self, out_img_path):
+        file_dir = os.path.dirname(out_img_path)
+        if not os.path.exists(file_dir):
+            logger.warning(
+                'Folder [{}] does not exist, creating to dump logs'.format(file_dir))
+            os.makedirs(file_dir)
+
         img = self._camera.get_img(module=2, width=1920, height=1080)
         if img is None:
             logger.fatal("Get img from camera failed")

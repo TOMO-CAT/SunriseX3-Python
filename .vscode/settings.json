@@ -5,6 +5,7 @@
         "hobot",
         "mipi",
         "MJPEG",
+        "signum",
         "unexport"
     ]
 }
