@@ -15,10 +15,10 @@ def main():
     signal.signal_handler()
 
     camera_recorder = CameraRecorder()
-    for _ in range(100):
+    for _ in range(5000):
         camera_recorder.get_img(
-            "output/pictures/{}.jpeg".format(time.time_ns()))
-        time.sleep(1)
+            "output/pictures/{}.jpeg".format(time.time()))
+        time.sleep(0.1)
 
     logger.info('Quit')
 

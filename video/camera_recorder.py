@@ -56,3 +56,19 @@ class CameraRecorder(object):
         with open(out_img_path, "wb+") as f:
             f.write(encoded_img)
         logger.info(f"Get image '{out_img_path}' success")
+
+    def get_frame(self):
+        img = self._camera.get_img(module=2, width=1920, height=1080)
+        if img is None:
+            logger.fatal("Get img from camera failed")
+        # encode_type: 1(H264) 2(H265) 3(MJPEG)
+        ret = self._encoder.encode(video_chn=0, type=3,
+                                   width=1920, height=1080, bits=80000)
+        if ret != 0:
+            logger.fatal("Encode failed with ret '{}'".format(ret))
+        if self._encoder.encode_file(img) != 0:
+            logger.fatal("Encode file failed")
+        encoded_img = self._encoder.get_img()
+        if encoded_img is None:
+            logger.fatal("Get image from encoder fail")
+        return encoded_img
