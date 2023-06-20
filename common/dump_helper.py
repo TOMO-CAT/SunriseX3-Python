@@ -5,7 +5,7 @@ import time
 
 class DumpHelper:
     # 最大日志保留小时数
-    MAX_RETAIN_HOURS = 5
+    MAX_RETAIN_HOURS = 2
 
     def __init__(self, to_dir, file_name_prefix, file_name_suffix):
         self.to_dir = to_dir

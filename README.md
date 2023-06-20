@@ -9,6 +9,9 @@
 以模块的方式执行 example：
 
 ```bash
+# 抓拍图片
+sudo python3 -m examples.picture_capture
+
 # 录制视频
 sudo python3 -m examples.video_capture
 ```
