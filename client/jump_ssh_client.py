@@ -2,6 +2,7 @@ import paramiko
 import argparse
 from common.log import logger
 from pathlib import Path
+import re
 from typing import Dict, List
 import os
 import time
@@ -84,11 +85,13 @@ class JumpServerClient:
         if not is_success:
             logger.error(f'exec cmd [{command}] fail with err [{output}]')
             return False, output
+        # 剔除转义字符和颜色
+        output = self.__beautify_output(output)
         # 返回的内容会带上输入的命令, 需要移除一下
         output = output.replace(command, '', 1)
         return True, output
 
-    def __beautify_output(self, output: str):
+    def __beautify_output(self, output: str, clear_color=True):
         # 剔除转义字符
         character_to_remove = [
             '\x1b[H',  # 将光标移动到屏幕的左上角
@@ -96,6 +99,9 @@ class JumpServerClient:
         ]
         for char in character_to_remove:
             output = output.replace(char, '')
+        # 剔除颜色
+        ansi_escape = re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])')
+        output = ansi_escape.sub('', output)
         return output
 
     def __wait_for_output(self, output: str):
