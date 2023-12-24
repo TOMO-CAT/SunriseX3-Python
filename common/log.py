@@ -6,6 +6,7 @@ logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 formatter = logging.Formatter(
     '[%(asctime)s][%(levelname)s][%(filename)s:%(lineno)d] %(message)s')
+# 默认会打印到控制台, 要打印到文件可以调用 init_logger 接口
 console_handler = logging.StreamHandler()
 console_handler.setLevel(logging.DEBUG)
 console_handler.setFormatter(formatter)
