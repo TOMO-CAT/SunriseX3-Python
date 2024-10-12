@@ -15,3 +15,7 @@ sudo python3 -m examples.picture_capture
 # 录制视频
 sudo python3 -m examples.video_capture
 ```
+
+## Reference
+
+[1] [旭日X3派用户手册](https://developer.d-robotics.cc/api/v1/fileData/documents_pi/index.html)

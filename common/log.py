@@ -2,6 +2,31 @@ import logging
 from logging.handlers import TimedRotatingFileHandler
 import os
 
+
+class CustomFormatter(logging.Formatter): \
+        # 终端日志支持颜色输出:
+    # https://stackoverflow.com/questions/384076/how-can-i-color-python-logging-output
+    grey = "\x1b[38;20m"
+    yellow = "\x1b[33;20m"
+    red = "\x1b[31;20m"
+    bold_red = "\x1b[31;1m"
+    reset = "\x1b[0m"
+    format = '[%(asctime)s][%(levelname)s][%(filename)s:%(lineno)d] %(message)s'
+
+    FORMATS = {
+        logging.DEBUG: grey + format + reset,
+        logging.INFO: grey + format + reset,
+        logging.WARNING: yellow + format + reset,
+        logging.ERROR: red + format + reset,
+        logging.CRITICAL: bold_red + format + reset
+    }
+
+    def format(self, record):
+        log_fmt = self.FORMATS.get(record.levelno)
+        formatter = logging.Formatter(log_fmt)
+        return formatter.format(record)
+
+
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 formatter = logging.Formatter(
@@ -9,7 +34,7 @@ formatter = logging.Formatter(
 # 默认会打印到控制台, 要打印到文件可以调用 init_logger 接口
 console_handler = logging.StreamHandler()
 console_handler.setLevel(logging.DEBUG)
-console_handler.setFormatter(formatter)
+console_handler.setFormatter(CustomFormatter())
 logger.addHandler(console_handler)
 
 

@@ -19,17 +19,22 @@ class CameraRecorder(object):
         logger.info("Creating CameraRecorder")
         sensor_reset_shell()
 
+        # Camera 对象用于完成 MIPI Camera 的图像采集和处理功能
+        # https://developer.d-robotics.cc/api/v1/fileData/documents_pi/Python_Develop/python_vio.html?highlight=libsrcampy#camera
         self._camera = libsrcampy.Camera()
         if self._camera.open_cam(pipe_id=0, video_index=1, fps=30, width=1920, height=1080) != 0:
-            logger.fatal('Open camera fail, quit')
+            logger.fatal('Open camera fail')
+            os.exit(1)
         # 等待摄像头参数校正, 否则画面失真(偏蓝偏黑)
-        sleep(1)
+        # sleep(1)
+
+        # Encoder 对象实现了对视频数据的编码压缩功能
+        # https://developer.d-robotics.cc/api/v1/fileData/documents_pi/Python_Develop/python_vio.html?highlight=libsrcampy#encoder
         self._encoder = libsrcampy.Encoder()
-        # self._decoder = libsrcampy.Decoder()
 
     def __del__(self):
         logger.info("Destory CameraRecorder")
-        # self._decoder.close()
+        # self._decoder.close()c
         self._encoder.close()
         self._camera.close_cam()
 
