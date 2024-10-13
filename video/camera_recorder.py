@@ -2,6 +2,7 @@ from common.log import logger
 from hobot_vio import libsrcampy
 import os
 from time import sleep
+from common.config import config
 
 
 def sensor_reset_shell():
@@ -22,7 +23,13 @@ class CameraRecorder(object):
         # Camera 对象用于完成 MIPI Camera 的图像采集和处理功能
         # https://developer.d-robotics.cc/api/v1/fileData/documents_pi/Python_Develop/python_vio.html?highlight=libsrcampy#camera
         self._camera = libsrcampy.Camera()
-        if self._camera.open_cam(pipe_id=0, video_index=1, fps=30, width=1920, height=1080) != 0:
+        if self._camera.open_cam(
+                pipe_id=config.get('Camera.pipe_id'),
+                video_index=config.get('Camera.video_index'),
+                fps=config.get("Camera.fps"),
+                width=config.get("Camera.width"),
+                height=config.get("Camera", "height")
+        ) != 0:
             logger.fatal('Open camera fail')
             os.exit(1)
         # 等待摄像头参数校正, 否则画面失真(偏蓝偏黑)

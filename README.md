@@ -4,6 +4,12 @@
 
 旭日 X3 派上的 Python 项目。
 
+## 依赖
+
+```bash
+sudo pip3 install toml
+```
+
 ## Examples
 
 以模块的方式执行 example：

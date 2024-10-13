@@ -1,0 +1,7 @@
+# Camera configuration
+[Camera]
+pipe_id = 0
+video_index = 1
+fps = 30
+width = 1920
+height = 1080
