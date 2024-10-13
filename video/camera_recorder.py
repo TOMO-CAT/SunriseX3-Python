@@ -28,7 +28,7 @@ class CameraRecorder(object):
                 video_index=config.get('Camera.video_index'),
                 fps=config.get("Camera.fps"),
                 width=config.get("Camera.width"),
-                height=config.get("Camera", "height")
+                height=config.get("Camera.height")
         ) != 0:
             logger.fatal('Open camera fail')
             os.exit(1)
