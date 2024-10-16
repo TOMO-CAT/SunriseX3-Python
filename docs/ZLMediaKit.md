@@ -25,3 +25,9 @@ cd build
 cmake ..
 make -j4
 ```
+
+后台启动：
+
+```bash
+sudo ./release/linux/Debug/MediaServer -d &
+```
