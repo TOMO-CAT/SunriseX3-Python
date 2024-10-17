@@ -17,7 +17,7 @@ def main():
     signal.signal_handler()
 
     camera = Camera()
-    encoder = Encoder()
+    encoder = Encoder("MJPEG")
     dump_helper = DumpHelper("./output/picture_capture", "picture_", ".jpeg")
 
     for _ in range(500):

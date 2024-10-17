@@ -5,3 +5,9 @@ video_index = 1
 fps = 30
 width = 1920
 height = 1080
+
+[Encoder]
+video_chn = 0
+width = 1920
+height = 1080
+bits = 80000

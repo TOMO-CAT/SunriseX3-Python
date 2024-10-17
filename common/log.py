@@ -3,11 +3,12 @@ from logging.handlers import TimedRotatingFileHandler
 import os
 
 
-class CustomFormatter(logging.Formatter): \
-        # 终端日志支持颜色输出:
+class CustomFormatter(logging.Formatter):
+    # 终端日志支持颜色输出:
     # https://stackoverflow.com/questions/384076/how-can-i-color-python-logging-output
     grey = "\x1b[38;20m"
     yellow = "\x1b[33;20m"
+    blue = "\x1b[34;20m"
     red = "\x1b[31;20m"
     bold_red = "\x1b[31;1m"
     reset = "\x1b[0m"
@@ -15,7 +16,7 @@ class CustomFormatter(logging.Formatter): \
 
     FORMATS = {
         logging.DEBUG: grey + format + reset,
-        logging.INFO: grey + format + reset,
+        logging.INFO: blue + format + reset,
         logging.WARNING: yellow + format + reset,
         logging.ERROR: red + format + reset,
         logging.CRITICAL: bold_red + format + reset
