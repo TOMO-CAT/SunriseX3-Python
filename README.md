@@ -12,6 +12,9 @@
 
 ```bash
 sudo pip3 install toml
+
+sudo apt install librtmp-dev
+sudo pip3 install python-librtmp
 ```
 
 ## Examples
