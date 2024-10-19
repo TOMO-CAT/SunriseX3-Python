@@ -4,6 +4,10 @@
 
 旭日 X3 派上的 Python 项目。
 
+## 工具
+
+* **h264 播放软件**: VLC Media Player
+
 ## 依赖
 
 ```bash

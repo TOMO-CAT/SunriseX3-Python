@@ -12,7 +12,7 @@ LOG_FILE_PATH = 'logs/picture_capture.log'
 def main():
     # sudo python3 -m examples.picture_capture
     log_to_file(LOG_FILE_PATH)
-    logger.info('Starting VideoCapture module ...')
+    logger.info('Starting CaptureCapture module ...')
 
     signal.signal_handler()
 
