@@ -32,3 +32,4 @@ sudo python3 -m examples.video_capture
 ## Reference
 
 [1] [旭日X3派用户手册](https://developer.d-robotics.cc/api/v1/fileData/documents_pi/index.html)
+[2] [ZLMediaKit 文档](https://docs.zlmediakit.com/zh/tutorial/)
